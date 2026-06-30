@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashbord/noticias/cadastrar', [NoticiaController::class, "create"])->name('admin.noticias.cadastrar');
 
+    Route::post('/dashbord/noticias/cadastrar', [NoticiaController::class, "store"])->name('admin.noticias.armazenar');
+
     Route::get('/dashbord/noticias/editar/{id}', [NoticiaController::class, "edit"])->name('admin.noticias.editar');
 
     Route::delete('/dashbord/noticias/excluir/{id}', [NoticiaController::class, "destroy"])->name('admin.noticias.excluir');
