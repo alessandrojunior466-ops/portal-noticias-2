@@ -15,7 +15,7 @@
                 </div>
                 <div class="p-6 overflow-x-auto">
 
-                    <form action="#" method="post">
+
 
                         <div class="mb-5">
                             <label for="categoria_id" class="form-label">Categoria *</label>
