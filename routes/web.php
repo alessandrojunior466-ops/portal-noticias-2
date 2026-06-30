@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\NoticiaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -22,6 +23,22 @@ Route::middleware('auth')->group(function () {
     //Rotas do gerenciamento de Noticias
 
     Route::get('/dashbord/noticias', [NoticiaController::class, "index"])->name('admin.noticias.index');
+
+    Route::get('/dashbord/noticias/cadastrar', [NoticiaController::class, "create"])->name('admin.noticias.cadastrar');
+
+    Route::get('/dashbord/noticias/editar/{id}', [NoticiaController::class, "edit"])->name('admin.noticias.editar');
+
+    Route::delete('/dashbord/noticias/excluir/{id}', [NoticiaController::class, "destroy"])->name('admin.noticias.excluir');
+
+    Route::get('/dashbord/categorias/editar/{id}', [NoticiaController::class, "edit"])->name('admin.categorias.editar');
+
+    Route::delete('/dashbord/categorias/excluir/{id}', [NoticiaController::class, "destroy"])->name('admin.categorias.excluir');
+
+    //Rotas do gerenciamento de categorias
+
+    Route::get('/dashbord/categorias', [CategoriaController::class, "index"])->name('admin.categorias.index');
+
+    Route::get('/dashbord/categorias/cadastrar', [CategoriaController::class, "create"])->name('admin.categorias.cadastrar');
 });
 
 require __DIR__ . '/auth.php';

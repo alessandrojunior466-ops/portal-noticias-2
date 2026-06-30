@@ -3,28 +3,38 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Noticia;
 use Illuminate\Http\Request;
 
 class NoticiaController extends Controller
 {
     /**
-     * Lista as Noticias do Banco
+     * Listar as Notícias de um banco.
      */
     public function index()
     {
-        return view('admin.noticias.index');
+        $noticias = Noticia::all();
+
+        return view("admin.noticias.index", [
+            'noticias' => $noticias,
+        ]);
+
+        /*
+        Outra forma de fazer o mesmo de cima
+        return view("admin.noticias.index", compact('noticias');
+        */
     }
 
     /**
-     * Chamar a view do cadastrar noticias 
+     * Chamar o view do cadastrar notícias.
      */
     public function create()
     {
-        //
+        return view("admin.noticias.cadastrar");
     }
 
     /**
-     * Armazenar o dados da noticias, enviadas pelo formulario
+     * Armazenar os Dados da Notícia, enviado pelo formulário.
      */
     public function store(Request $request)
     {
@@ -32,15 +42,15 @@ class NoticiaController extends Controller
     }
 
     /**
-     * Visualizar uma noticia
+     * Chamar o view do editor de notícias.
      */
-    public function show(string $id)
+    public function edit(string $id)
     {
-        //
+        return view("admin.noticias.editar");
     }
 
     /**
-     * armazenar a atualização dos dados das noticias 
+     * Armazenar a atualização dos dados da notícia.
      */
     public function update(Request $request, string $id)
     {
@@ -48,10 +58,10 @@ class NoticiaController extends Controller
     }
 
     /**
-     * Excluir uma noticia do banco de dados
+     * Excluir uma notícia do banco de dados.
      */
     public function destroy(string $id)
     {
-        //
+        return "funcionou.. Deletou o registro";
     }
 }
