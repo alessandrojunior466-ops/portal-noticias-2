@@ -17,7 +17,8 @@
     <select name="categoria_id" id="categoria_id" class="form-control">
         <option></option>
         @foreach ($categorias as $id => $nome)
-            <option {{ old('categoria_id', $id) == $id ? 'selected' : '' }} value="{{ $id }}">
+            <option {{ old('categoria_id', $noticia->categoria_id) == $id ? 'selected' : '' }}
+                value="{{ $id }}">
                 {{ $nome }}</option>
         @endforeach
     </select>
@@ -25,21 +26,30 @@
 
 <div class="mb-5">
     <label for="titulo" class="form-label">Título *</label>
-    <input type="text" name="titulo" id="titulo" value="{{ old('titulo') }}" class="form-control">
+    <input type="text" name="titulo" id="titulo" value="{{ old('titulo', $noticia->titulo) }}"
+        class="form-control">
 </div>
 
 <div class="mb-5">
     <label for="resumo" class="form-label">Resumo *</label>
-    <textarea name="resumo" id="resumo" rows="3" class="form-control">{{ old('resumo') }}</textarea>
+    <textarea name="resumo" id="resumo" rows="3" class="form-control">{{ old('resumo', $noticia->resumo) }}</textarea>
 </div>
 
 <div class="mb-5">
     <label for="conteudo" class="form-label">Conteúdo *</label>
-    <textarea name="conteudo" id="conteudo" rows="10" class="form-control">{{ old('conteudo') }}</textarea>
+    <textarea name="conteudo" id="conteudo" rows="10" class="form-control">{{ old('conteudo', $noticia->conteudo) }}</textarea>
 </div>
 
 <div class="mb-5">
     <label for="imagem" class="form-label">Imagem Capa *</label>
+
+    @if ($noticia?->imagem)
+        <div class="mb-3">
+            <img src="{{ asset('storage/' . $noticia->imagem) }}"
+                class="h-32 rounded object-cover border border-slate-200">
+        </div>
+    @endif
+
     <input type="file" name="imagem" id="imagem" accept="image/*" class="form-control">
     <p>JPG e PNG no máximo 2 MB</p>
 </div>
@@ -48,10 +58,12 @@
     <label for="situacao" class="form-label">Situação</label>
     <div id="situacao" class="flex gap-5">
         <label>
-            <input type="radio" name="ativo" value="1" {{ old('ativo', $id) == 1 ? 'cheked' : '' }}>Publicado
+            <input type="radio" name="ativo" value="1"
+                {{ old('ativo', $noticia->ativo) == 1 ? 'cheked' : '' }}>Publicado
         </label>
         <label>
-            <input type="radio" name="ativo" value="0" {{ old('ativo', $id) == 0 ? 'cheked' : '' }}>Rascunho
+            <input type="radio" name="ativo" value="0"
+                {{ old('ativo', $noticia->ativo) == 0 ? 'cheked' : '' }}>Rascunho
         </label>
     </div>
 
