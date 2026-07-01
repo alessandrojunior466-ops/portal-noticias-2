@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashbord/categorias/editar/{id}', [NoticiaController::class, "edit"])->name('admin.categorias.editar');
 
+    Route::put('/dashbord/categorias/atualizar/{id}', [NoticiaController::class, "update"])->name('admin.categorias.atualizar');
+
     Route::delete('/dashbord/categorias/excluir/{id}', [NoticiaController::class, "destroy"])->name('admin.categorias.excluir');
 
     //Rotas do gerenciamento de categorias
