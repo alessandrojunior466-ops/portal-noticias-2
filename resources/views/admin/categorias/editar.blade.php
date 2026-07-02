@@ -10,12 +10,13 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between items-center">
                     <h1 class="text-[18px]"> Categorias</h1>
-                    <a href="{{ route('admin.noticias.index') }}"
+                    <a href="{{ route('admin.categorias.index') }}"
                         class=" text-slate-500 font-semibold px-4 py-2 rounded "><- Voltar para categorias.</a>
                 </div>
                 <div class="p-6 overflow-x-auto">
 
-                    <form action="#" method="post">
+                    <form action="{{ route('admin.categorias.atualizar', $categoria->id) }}" method="post"
+                        enctype="multipart/form-data">
 
                         @include('admin.categorias._form')
 
