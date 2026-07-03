@@ -19,14 +19,6 @@ class NoticiaApiController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -41,14 +33,6 @@ class NoticiaApiController extends Controller
     {
         $noticia = Noticia::findOrfail($id);
         return response()->json($noticia);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**
